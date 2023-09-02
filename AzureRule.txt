@@ -1,0 +1,13 @@
+<inbound>
+  <base />
+  <validate-client-certificate 
+    validate-revocation="true" 
+    validate-trust="true" 
+    validate-not-before="true" 
+    validate-not-after="true" 
+    ignore-error="false" />
+        <!-- Setting the client certificate subject as a header -->
+  <set-header name="X-Client-Cert-Subject" exists-action="override">
+    <value>@(context.Request.Certificate.Subject)</value>
+  </set-header>
+</inbound>
